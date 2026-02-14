@@ -1,0 +1,821 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2759
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 # \uc0\u55357 \u56477  Updated "Will You Be My Valentine?" Microsite \'97 Cortado Edition \u9749 \
+\
+Here's the updated version with a cortado cups gift reveal at the end!\
+\
+```html\
+<!DOCTYPE html>\
+<html lang="en">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <title>Important Notification \uc0\u55357 \u56596 </title>\
+    <style>\
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');\
+\
+        * \{\
+            margin: 0;\
+            padding: 0;\
+            box-sizing: border-box;\
+        \}\
+\
+        body \{\
+            font-family: 'Nunito', sans-serif;\
+            min-height: 100vh;\
+            display: flex;\
+            align-items: center;\
+            justify-content: center;\
+            background: #1a1a2e;\
+            overflow: hidden;\
+            position: relative;\
+        \}\
+\
+        /* Floating hearts background */\
+        .hearts-bg \{\
+            position: fixed;\
+            top: 0; left: 0;\
+            width: 100%; height: 100%;\
+            pointer-events: none;\
+            z-index: 0;\
+        \}\
+\
+        .floating-heart \{\
+            position: absolute;\
+            font-size: 20px;\
+            animation: floatUp linear infinite;\
+            opacity: 0.3;\
+        \}\
+\
+        @keyframes floatUp \{\
+            0% \{\
+                transform: translateY(100vh) rotate(0deg);\
+                opacity: 0;\
+            \}\
+            10% \{\
+                opacity: 0.3;\
+            \}\
+            90% \{\
+                opacity: 0.3;\
+            \}\
+            100% \{\
+                transform: translateY(-10vh) rotate(360deg);\
+                opacity: 0;\
+            \}\
+        \}\
+\
+        /* Fake desktop background */\
+        .desktop-overlay \{\
+            position: fixed;\
+            top: 0; left: 0;\
+            width: 100%; height: 100%;\
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);\
+            z-index: 0;\
+        \}\
+\
+        /* Fake taskbar */\
+        .taskbar \{\
+            position: fixed;\
+            bottom: 0;\
+            left: 0;\
+            width: 100%;\
+            height: 48px;\
+            background: rgba(0,0,0,0.85);\
+            backdrop-filter: blur(10px);\
+            z-index: 1;\
+            display: flex;\
+            align-items: center;\
+            padding: 0 12px;\
+            gap: 8px;\
+        \}\
+\
+        .taskbar-icon \{\
+            width: 32px; height: 32px;\
+            background: rgba(255,255,255,0.1);\
+            border-radius: 6px;\
+        \}\
+\
+        .taskbar-time \{\
+            margin-left: auto;\
+            color: white;\
+            font-size: 13px;\
+            display: flex;\
+            flex-direction: column;\
+            align-items: flex-end;\
+            line-height: 1.2;\
+        \}\
+\
+        /* Dim overlay behind popup */\
+        .dim-overlay \{\
+            position: fixed;\
+            top: 0; left: 0;\
+            width: 100%; height: 100%;\
+            background: rgba(0,0,0,0.4);\
+            z-index: 5;\
+        \}\
+\
+        /* Main popup card */\
+        .popup-card \{\
+            position: relative;\
+            z-index: 10;\
+            background: #ffffff;\
+            border-radius: 16px;\
+            box-shadow:\
+                0 25px 60px rgba(0,0,0,0.5),\
+                0 0 0 1px rgba(255,255,255,0.1);\
+            width: 420px;\
+            max-width: 92vw;\
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);\
+            overflow: hidden;\
+        \}\
+\
+        @keyframes popIn \{\
+            0% \{\
+                transform: scale(0.5);\
+                opacity: 0;\
+            \}\
+            100% \{\
+                transform: scale(1);\
+                opacity: 1;\
+            \}\
+        \}\
+\
+        /* Popup title bar */\
+        .popup-titlebar \{\
+            background: linear-gradient(135deg, #e8396b, #d63384);\
+            padding: 12px 16px;\
+            display: flex;\
+            align-items: center;\
+            gap: 10px;\
+        \}\
+\
+        .popup-titlebar .icon \{\
+            font-size: 18px;\
+        \}\
+\
+        .popup-titlebar .title \{\
+            color: white;\
+            font-weight: 700;\
+            font-size: 14px;\
+            flex: 1;\
+        \}\
+\
+        .titlebar-dots \{\
+            display: flex;\
+            gap: 6px;\
+        \}\
+\
+        .titlebar-dots span \{\
+            width: 13px; height: 13px;\
+            border-radius: 50%;\
+            background: rgba(255,255,255,0.3);\
+            cursor: default;\
+        \}\
+\
+        /* Popup body */\
+        .popup-body \{\
+            padding: 30px 30px 25px;\
+            text-align: center;\
+        \}\
+\
+        .bear-container \{\
+            position: relative;\
+            width: 140px;\
+            height: 140px;\
+            margin: 0 auto 20px;\
+        \}\
+\
+        .bear-emoji \{\
+            font-size: 80px;\
+            display: block;\
+            animation: bearBounce 2s ease-in-out infinite;\
+        \}\
+\
+        @keyframes bearBounce \{\
+            0%, 100% \{ transform: translateY(0) rotate(0deg); \}\
+            25% \{ transform: translateY(-10px) rotate(-5deg); \}\
+            75% \{ transform: translateY(-10px) rotate(5deg); \}\
+        \}\
+\
+        .heart-orbit \{\
+            position: absolute;\
+            font-size: 22px;\
+            animation: orbit 3s linear infinite;\
+        \}\
+\
+        .heart-orbit:nth-child(2) \{ animation-delay: -1s; \}\
+        .heart-orbit:nth-child(3) \{ animation-delay: -2s; \}\
+\
+        @keyframes orbit \{\
+            0% \{ transform: rotate(0deg) translateX(55px) rotate(0deg); \}\
+            100% \{ transform: rotate(360deg) translateX(55px) rotate(-360deg); \}\
+        \}\
+\
+        .popup-question \{\
+            font-size: 22px;\
+            font-weight: 800;\
+            color: #2d2d2d;\
+            margin-bottom: 6px;\
+            line-height: 1.3;\
+        \}\
+\
+        .popup-sub \{\
+            font-size: 14px;\
+            color: #888;\
+            margin-bottom: 25px;\
+        \}\
+\
+        /* Buttons */\
+        .buttons-container \{\
+            display: flex;\
+            gap: 12px;\
+            justify-content: center;\
+            align-items: center;\
+            min-height: 60px;\
+            position: relative;\
+        \}\
+\
+        .btn-yes \{\
+            background: linear-gradient(135deg, #ff6b8a, #e8396b, #d63384);\
+            color: white;\
+            border: none;\
+            padding: 14px 40px;\
+            border-radius: 50px;\
+            font-size: 17px;\
+            font-weight: 800;\
+            font-family: 'Nunito', sans-serif;\
+            cursor: pointer;\
+            transition: all 0.3s ease;\
+            box-shadow: 0 4px 15px rgba(214, 51, 132, 0.4);\
+            position: relative;\
+            z-index: 2;\
+        \}\
+\
+        .btn-yes:hover \{\
+            transform: scale(1.1);\
+            box-shadow: 0 6px 25px rgba(214, 51, 132, 0.6);\
+        \}\
+\
+        .btn-yes.grown \{\
+            padding: 18px 55px;\
+            font-size: 22px;\
+        \}\
+\
+        .btn-yes.grown2 \{\
+            padding: 22px 70px;\
+            font-size: 26px;\
+        \}\
+\
+        .btn-no \{\
+            background: #e9ecef;\
+            color: #666;\
+            border: none;\
+            padding: 14px 35px;\
+            border-radius: 50px;\
+            font-size: 15px;\
+            font-weight: 700;\
+            font-family: 'Nunito', sans-serif;\
+            cursor: pointer;\
+            transition: all 0.2s ease;\
+            position: relative;\
+            z-index: 2;\
+            user-select: none;\
+        \}\
+\
+        .btn-no.shrink1 \{ transform: scale(0.85); \}\
+        .btn-no.shrink2 \{ transform: scale(0.65); font-size: 12px; padding: 10px 22px; \}\
+        .btn-no.shrink3 \{ transform: scale(0.45); font-size: 10px; padding: 8px 18px; \}\
+\
+        /* Warning bar at bottom */\
+        .popup-warning \{\
+            background: #fff3cd;\
+            padding: 10px 20px;\
+            text-align: center;\
+            font-size: 12px;\
+            color: #856404;\
+            border-top: 1px solid #ffc107;\
+        \}\
+\
+        /* ============ YES SCREEN ============ */\
+        .yes-screen \{\
+            display: none;\
+            position: fixed;\
+            top: 0; left: 0;\
+            width: 100%; height: 100%;\
+            background: linear-gradient(135deg, #ff6b8a, #d63384, #e8396b);\
+            z-index: 100;\
+            align-items: center;\
+            justify-content: center;\
+            flex-direction: column;\
+            text-align: center;\
+            padding: 30px;\
+        \}\
+\
+        .yes-screen.active \{\
+            display: flex;\
+            animation: fadeIn 0.5s ease;\
+        \}\
+\
+        @keyframes fadeIn \{\
+            from \{ opacity: 0; \}\
+            to \{ opacity: 1; \}\
+        \}\
+\
+        .yes-screen .big-heart \{\
+            font-size: 100px;\
+            animation: heartPulse 0.8s ease-in-out infinite;\
+        \}\
+\
+        @keyframes heartPulse \{\
+            0%, 100% \{ transform: scale(1); \}\
+            50% \{ transform: scale(1.2); \}\
+        \}\
+\
+        .yes-screen h1 \{\
+            color: white;\
+            font-size: 42px;\
+            font-weight: 800;\
+            margin: 20px 0 10px;\
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);\
+        \}\
+\
+        .yes-screen p \{\
+            color: rgba(255,255,255,0.9);\
+            font-size: 20px;\
+            font-weight: 600;\
+            max-width: 500px;\
+        \}\
+\
+        .yes-screen .sub-text \{\
+            margin-top: 15px;\
+            font-size: 16px;\
+            color: rgba(255,255,255,0.7);\
+        \}\
+\
+        /* Gift reveal */\
+        .gift-reveal \{\
+            margin-top: 30px;\
+            opacity: 0;\
+            transform: translateY(30px);\
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);\
+        \}\
+\
+        .gift-reveal.show \{\
+            opacity: 1;\
+            transform: translateY(0);\
+        \}\
+\
+        .gift-box \{\
+            background: rgba(255,255,255,0.15);\
+            backdrop-filter: blur(10px);\
+            border: 2px solid rgba(255,255,255,0.3);\
+            border-radius: 20px;\
+            padding: 25px 35px;\
+            display: inline-block;\
+            cursor: pointer;\
+            transition: all 0.3s ease;\
+        \}\
+\
+        .gift-box:hover \{\
+            transform: scale(1.05);\
+            background: rgba(255,255,255,0.2);\
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);\
+        \}\
+\
+        .gift-box .gift-icon \{\
+            font-size: 60px;\
+            display: block;\
+            margin-bottom: 10px;\
+            animation: giftWiggle 1s ease-in-out infinite;\
+        \}\
+\
+        @keyframes giftWiggle \{\
+            0%, 100% \{ transform: rotate(0deg); \}\
+            25% \{ transform: rotate(-10deg); \}\
+            75% \{ transform: rotate(10deg); \}\
+        \}\
+\
+        .gift-box .gift-label \{\
+            color: white;\
+            font-size: 14px;\
+            font-weight: 700;\
+            letter-spacing: 1px;\
+            text-transform: uppercase;\
+        \}\
+\
+        /* Gift opened state */\
+        .gift-opened \{\
+            display: none;\
+            text-align: center;\
+            animation: giftRevealAnim 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);\
+        \}\
+\
+        .gift-opened.show \{\
+            display: block;\
+        \}\
+\
+        @keyframes giftRevealAnim \{\
+            0% \{ transform: scale(0.3) rotate(-10deg); opacity: 0; \}\
+            100% \{ transform: scale(1) rotate(0deg); opacity: 1; \}\
+        \}\
+\
+        .gift-opened .cortado-emoji \{\
+            font-size: 70px;\
+            display: block;\
+            margin-bottom: 8px;\
+        \}\
+\
+        .gift-opened .gift-message \{\
+            color: white;\
+            font-size: 20px;\
+            font-weight: 800;\
+            margin-bottom: 6px;\
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);\
+        \}\
+\
+        .gift-opened .gift-detail \{\
+            color: rgba(255,255,255,0.85);\
+            font-size: 15px;\
+            font-weight: 600;\
+            line-height: 1.5;\
+        \}\
+\
+        .gift-opened .gift-note \{\
+            margin-top: 12px;\
+            font-size: 13px;\
+            color: rgba(255,255,255,0.6);\
+            font-style: italic;\
+        \}\
+\
+        /* Confetti */\
+        .confetti-container \{\
+            position: fixed;\
+            top: 0; left: 0;\
+            width: 100%; height: 100%;\
+            pointer-events: none;\
+            z-index: 101;\
+        \}\
+\
+        .confetti-piece \{\
+            position: absolute;\
+            width: 10px;\
+            height: 10px;\
+            top: -10px;\
+            animation: confettiFall linear forwards;\
+        \}\
+\
+        @keyframes confettiFall \{\
+            0% \{\
+                transform: translateY(0) rotate(0deg) scale(1);\
+                opacity: 1;\
+            \}\
+            100% \{\
+                transform: translateY(100vh) rotate(720deg) scale(0.5);\
+                opacity: 0;\
+            \}\
+        \}\
+\
+        /* Toast */\
+        .toast \{\
+            position: fixed;\
+            top: 20px;\
+            left: 50%;\
+            transform: translateX(-50%) translateY(-100px);\
+            background: rgba(0,0,0,0.85);\
+            color: white;\
+            padding: 12px 24px;\
+            border-radius: 12px;\
+            font-size: 14px;\
+            font-weight: 600;\
+            z-index: 50;\
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);\
+            white-space: nowrap;\
+        \}\
+\
+        .toast.show \{\
+            transform: translateX(-50%) translateY(0);\
+        \}\
+\
+        .attempt-counter \{\
+            font-size: 11px;\
+            color: #ccc;\
+            margin-top: 8px;\
+        \}\
+\
+        @media (max-width: 480px) \{\
+            .popup-card \{ width: 95vw; \}\
+            .popup-body \{ padding: 20px 20px 18px; \}\
+            .popup-question \{ font-size: 19px; \}\
+            .btn-yes \{ padding: 12px 32px; font-size: 15px; \}\
+            .btn-no \{ padding: 12px 28px; font-size: 13px; \}\
+            .yes-screen h1 \{ font-size: 30px; \}\
+            .yes-screen p \{ font-size: 17px; \}\
+            .gift-box \{ padding: 20px 28px; \}\
+            .gift-box .gift-icon \{ font-size: 48px; \}\
+            .gift-opened .cortado-emoji \{ font-size: 55px; \}\
+            .gift-opened .gift-message \{ font-size: 17px; \}\
+        \}\
+    </style>\
+</head>\
+<body>\
+\
+    <!-- Desktop background -->\
+    <div class="desktop-overlay"></div>\
+\
+    <!-- Floating hearts in background -->\
+    <div class="hearts-bg" id="heartsBg"></div>\
+\
+    <!-- Taskbar -->\
+    <div class="taskbar">\
+        <div class="taskbar-icon"></div>\
+        <div class="taskbar-icon"></div>\
+        <div class="taskbar-icon"></div>\
+        <div class="taskbar-time">\
+            <span id="taskbarTime"></span>\
+            <span id="taskbarDate"></span>\
+        </div>\
+    </div>\
+\
+    <!-- Dim overlay -->\
+    <div class="dim-overlay"></div>\
+\
+    <!-- Toast notification -->\
+    <div class="toast" id="toast">\uc0\u55357 \u56468  Error: "No" is not a valid response</div>\
+\
+    <!-- Main Popup -->\
+    <div class="popup-card" id="popupCard">\
+        <div class="popup-titlebar">\
+            <span class="icon">\uc0\u9888 \u65039 </span>\
+            <span class="title">URGENT: Valentine's Day Alert</span>\
+            <div class="titlebar-dots">\
+                <span></span>\
+                <span></span>\
+                <span></span>\
+            </div>\
+        </div>\
+\
+        <div class="popup-body">\
+            <div class="bear-container">\
+                <span class="bear-emoji" id="bearEmoji">\uc0\u55358 \u56824 </span>\
+                <span class="heart-orbit" style="top:50%;left:50%;">\uc0\u55357 \u56469 </span>\
+                <span class="heart-orbit" style="top:50%;left:50%;">\uc0\u55357 \u56471 </span>\
+                <span class="heart-orbit" style="top:50%;left:50%;">\uc0\u55357 \u56470 </span>\
+            </div>\
+\
+            <div class="popup-question" id="questionText">Will you be my Valentine? \uc0\u55357 \u56477 </div>\
+            <div class="popup-sub" id="subText">\uc0\u9888 \u65039  System requires an answer to proceed.</div>\
+\
+            <div class="buttons-container" id="btnContainer">\
+                <button class="btn-yes" id="btnYes" onclick="sayYes()">Yes! \uc0\u55357 \u56470 </button>\
+                <button class="btn-no" id="btnNo" onmouseover="runAway()" onclick="tryNo()">No \uc0\u55357 \u56866 </button>\
+            </div>\
+\
+            <div class="attempt-counter" id="attemptCounter"></div>\
+        </div>\
+\
+        <div class="popup-warning" id="warningBar">\
+            \uc0\u55357 \u56594  This window cannot be closed until you choose wisely\
+        </div>\
+    </div>\
+\
+    <!-- Yes screen -->\
+    <div class="yes-screen" id="yesScreen">\
+        <div class="confetti-container" id="confettiContainer"></div>\
+        <div class="big-heart">\uc0\u55357 \u56470 </div>\
+        <h1>YAAAAY! \uc0\u55356 \u57225 </h1>\
+        <p>I knew you'd say yes! You're stuck with me forever! \uc0\u55358 \u56688 </p>\
+        <p class="sub-text">Happy Valentine's Day, my love! \uc0\u55357 \u56469 </p>\
+\
+        <!-- Gift Reveal Section -->\
+        <div class="gift-reveal" id="giftReveal">\
+            <div class="gift-box" id="giftBox" onclick="openGift()">\
+                <span class="gift-icon">\uc0\u55356 \u57217 </span>\
+                <span class="gift-label">Tap to open your gift!</span>\
+            </div>\
+            <div class="gift-opened" id="giftOpened">\
+                <span class="cortado-emoji">\uc0\u9749 \u9749 </span>\
+                <div class="gift-message">New Cortado Cups! \uc0\u55358 \u56590 </div>\
+                <div class="gift-detail">\
+                    A matching set for our morning cortados together \uc0\u9749 \u55357 \u56469 <br>\
+                    Because every sip is better with you.\
+                </div>\
+                <div class="gift-note">\
+                    (go check near the coffee machine \uc0\u55357 \u56384 )\
+                </div>\
+            </div>\
+        </div>\
+    </div>\
+\
+    <script>\
+        // ========= TASKBAR CLOCK =========\
+        function updateClock() \{\
+            const now = new Date();\
+            document.getElementById('taskbarTime').textContent =\
+                now.toLocaleTimeString([], \{ hour: '2-digit', minute: '2-digit' \});\
+            document.getElementById('taskbarDate').textContent =\
+                now.toLocaleDateString([], \{ month: 'short', day: 'numeric', year: 'numeric' \});\
+        \}\
+        updateClock();\
+        setInterval(updateClock, 1000);\
+\
+        // ========= FLOATING HEARTS =========\
+        const heartEmojis = ['\uc0\u55357 \u56469 ', '\u55357 \u56471 ', '\u55357 \u56470 ', '\u55357 \u56477 ', '\u10084 \u65039 ', '\u55358 \u56951 ', '\u55357 \u56472 ', '\u55357 \u56467 ', '\u9749 '];\
+        const heartsBg = document.getElementById('heartsBg');\
+        function createFloatingHeart() \{\
+            const heart = document.createElement('span');\
+            heart.classList.add('floating-heart');\
+            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];\
+            heart.style.left = Math.random() * 100 + '%';\
+            heart.style.fontSize = (14 + Math.random() * 20) + 'px';\
+            heart.style.animationDuration = (6 + Math.random() * 8) + 's';\
+            heart.style.animationDelay = Math.random() * 2 + 's';\
+            heartsBg.appendChild(heart);\
+            setTimeout(() => heart.remove(), 16000);\
+        \}\
+        setInterval(createFloatingHeart, 800);\
+        for (let i = 0; i < 10; i++) setTimeout(createFloatingHeart, i * 200);\
+\
+        // ========= NO BUTTON LOGIC =========\
+        let noAttempts = 0;\
+        const btnNo = document.getElementById('btnNo');\
+        const btnYes = document.getElementById('btnYes');\
+        const toast = document.getElementById('toast');\
+        const questionText = document.getElementById('questionText');\
+        const subText = document.getElementById('subText');\
+        const bearEmoji = document.getElementById('bearEmoji');\
+        const attemptCounter = document.getElementById('attemptCounter');\
+        const warningBar = document.getElementById('warningBar');\
+\
+        const noMessages = [\
+            "Are you sure?! \uc0\u55358 \u56698 ",\
+            "Really really sure? \uc0\u55357 \u56877 ",\
+            "Think again, pleeeease! \uc0\u55357 \u56911 ",\
+            "You're breaking my heart! \uc0\u55357 \u56468 ",\
+            "I'll be so sad... \uc0\u55357 \u56895 ",\
+            "My heart can't take this! \uc0\u55357 \u56873 ",\
+            "PLEASE! I'll make you a cortado! \uc0\u9749 ",\
+            "I promise to be the best Valentine! \uc0\u55356 \u57145 ",\
+            "Don't do this to me! \uc0\u55357 \u56877 \u55357 \u56468 ",\
+            "Okay fine... just kidding, say YES! \uc0\u55357 \u56868 "\
+        ];\
+\
+        const bearFaces = ['\uc0\u55358 \u56824 ', '\u55358 \u56698 ', '\u55357 \u56866 ', '\u55357 \u56877 ', '\u55357 \u56468 ', '\u55357 \u56895 ', '\u55358 \u56697 ', '\u55357 \u56873 ', '\u55358 \u57056 ', '\u55357 \u56868 '];\
+\
+        const toastMessages = [\
+            "\uc0\u55357 \u56468  Error: 'No' is not a valid response",\
+            "\uc0\u55357 \u57003  ACCESS DENIED: Try the other button",\
+            "\uc0\u9888 \u65039  Warning: Incorrect selection detected",\
+            "\uc0\u55357 \u56594  'No' button privileges revoked",\
+            "\uc0\u55357 \u56460  Hint: The answer starts with Y...",\
+            "\uc0\u9749  Bribery activated: cortado incoming...",\
+            "\uc0\u10060  Error 404: 'No' not found in dictionary",\
+            "\uc0\u55358 \u57056  System overloaded with sadness",\
+            "\uc0\u9940  This button is decorative only",\
+            "\uc0\u55358 \u56698  *sad bear noises*"\
+        ];\
+\
+        function runAway() \{\
+            const container = document.getElementById('btnContainer');\
+            const rect = container.getBoundingClientRect();\
+\
+            const maxX = rect.width - btnNo.offsetWidth - 20;\
+            const maxY = 60;\
+\
+            let newX = Math.random() * maxX - maxX / 2;\
+            let newY = Math.random() * maxY - maxY / 2;\
+\
+            btnNo.style.transition = 'transform 0.2s ease';\
+            btnNo.style.transform = `translate($\{newX\}px, $\{newY\}px)`;\
+\
+            if (noAttempts > 3) \{\
+                const popupCard = document.getElementById('popupCard');\
+                const popupRect = popupCard.getBoundingClientRect();\
+                newX = Math.random() * (popupRect.width - 100) - (popupRect.width / 2 - 50);\
+                newY = Math.random() * 80 - 40;\
+                btnNo.style.transform = `translate($\{newX\}px, $\{newY\}px) rotate($\{Math.random() * 30 - 15\}deg)`;\
+            \}\
+        \}\
+\
+        function tryNo() \{\
+            noAttempts++;\
+\
+            const msgIndex = Math.min(noAttempts - 1, noMessages.length - 1);\
+            questionText.textContent = noMessages[msgIndex];\
+\
+            const bearIndex = Math.min(noAttempts - 1, bearFaces.length - 1);\
+            bearEmoji.textContent = bearFaces[bearIndex];\
+\
+            const toastIndex = Math.min(noAttempts - 1, toastMessages.length - 1);\
+            toast.textContent = toastMessages[toastIndex];\
+            toast.classList.add('show');\
+            setTimeout(() => toast.classList.remove('show'), 2500);\
+\
+            if (noAttempts === 3) \{\
+                btnYes.classList.add('grown');\
+                btnYes.textContent = "YES PLEASE! \uc0\u55357 \u56470 ";\
+            \}\
+            if (noAttempts === 5) \{\
+                btnYes.classList.add('grown2');\
+                btnYes.textContent = "SAY YES! \uc0\u55357 \u56477 \u55357 \u56477 ";\
+            \}\
+\
+            if (noAttempts === 2) btnNo.classList.add('shrink1');\
+            if (noAttempts === 4) btnNo.classList.add('shrink2');\
+            if (noAttempts >= 6) btnNo.classList.add('shrink3');\
+\
+            const subs = [\
+                "\uc0\u9888 \u65039  Wrong answer detected...",\
+                "\uc0\u55357 \u56580  Please reconsider your choice...",\
+                "\uc0\u55357 \u56546  The correct answer is the pink button!",\
+                "\uc0\u55357 \u57000  Valentine's Police have been notified!",\
+                "\uc0\u9749  You won't get your surprise...",\
+                "\uc0\u9889  NO button energy reserves depleted...",\
+            ];\
+            subText.textContent = subs[Math.min(noAttempts - 1, subs.length - 1)];\
+\
+            attemptCounter.textContent = `Failed attempts: $\{noAttempts\} | Bear sadness level: $\{'\uc0\u55357 \u56866 '.repeat(Math.min(noAttempts, 5))\}`;\
+\
+            const card = document.getElementById('popupCard');\
+            card.style.animation = 'none';\
+            card.offsetHeight;\
+            card.style.animation = 'shake 0.5s ease';\
+\
+            if (noAttempts >= 3) \{\
+                warningBar.textContent = '\uc0\u55357 \u57000  ALERT: Just say yes already! There might be a surprise... \u9749 ';\
+                warningBar.style.background = '#f8d7da';\
+                warningBar.style.color = '#842029';\
+                warningBar.style.borderColor = '#f5c2c7';\
+            \}\
+\
+            if (noAttempts >= 10) \{\
+                setTimeout(() => \{\
+                    questionText.textContent = "That's it... auto-accepting! \uc0\u55357 \u56868 \u55357 \u56470 ";\
+                    setTimeout(sayYes, 1500);\
+                \}, 500);\
+            \}\
+\
+            runAway();\
+        \}\
+\
+        // Shake keyframes\
+        const styleSheet = document.createElement('style');\
+        styleSheet.textContent = `\
+            @keyframes shake \{\
+                0%, 100% \{ transform: translateX(0); \}\
+                10%, 50%, 90% \{ transform: translateX(-5px); \}\
+                30%, 70% \{ transform: translateX(5px); \}\
+            \}\
+        `;\
+        document.head.appendChild(styleSheet);\
+\
+        // ========= YES LOGIC =========\
+        function sayYes() \{\
+            document.getElementById('yesScreen').classList.add('active');\
+            launchConfetti();\
+\
+            document.getElementById('popupCard').style.display = 'none';\
+            document.querySelector('.dim-overlay').style.display = 'none';\
+\
+            // Show gift box after a delay\
+            setTimeout(() => \{\
+                document.getElementById('giftReveal').classList.add('show');\
+            \}, 2000);\
+        \}\
+\
+        // ========= GIFT LOGIC =========\
+        function openGift() \{\
+            const giftBox = document.getElementById('giftBox');\
+            const giftOpened = document.getElementById('giftOpened');\
+\
+            // Animate gift box out\
+            giftBox.style.transition = 'all 0.5s ease';\
+            giftBox.style.transform = 'scale(1.3) rotate(10deg)';\
+            giftBox.style.opacity = '0';\
+\
+            setTimeout(() => \{\
+                giftBox.style.display = 'none';\
+                giftOpened.classList.add('show');\
+                // Extra confetti burst for the gift!\
+                launchConfetti();\
+            \}, 500);\
+        \}\
+\
+        // ========= CONFETTI =========\
+        function launchConfetti() \{\
+            const container = document.getElementById('confettiContainer');\
+            const colors = ['#ff6b8a', '#d63384', '#ffd700', '#ff69b4', '#ff1493',\
+                           '#ffffff', '#ff85a2', '#f0a0c0', '#ffc0cb', '#e8396b',\
+                           '#8B4513', '#D2691E']; // coffee browns!\
+            const shapes = ['\uc0\u10084 \u65039 ', '\u55357 \u56470 ', '\u55357 \u56469 ', '\u10024 ', '\u55356 \u57225 ', '\u55357 \u56477 ', '\u55358 \u56951 ', '\u9749 ', '\u11088 '];\
+\
+            function burst() \{\
+                for (let i = 0; i < 40; i++) \{\
+                    const piece = document.createElement('div');\
+                    piece.classList.add('confetti-piece');\
+                    piece.style.left = Math.random() * 100 + '%';\
+                    piece.style.anim}
